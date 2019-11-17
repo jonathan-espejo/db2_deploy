@@ -5,20 +5,6 @@ set -e
 env=$( echo "$1" | tr '[:upper:]' '[:lower:]')
 action=$( echo "$2" | tr '[:upper:]' '[:lower:]')
 
-# Constants
-declare -A accounts
-accounts=( ["non_prd_acc_num"]=749397145246
-           ["mgmt_acc_num"]=863861149601
-           ["stg_acc_num"]=448247800550
-           ["prd_acc_num"]=303627379544
-           ["749397145246"]="Non-prd"
-           ["863861149601"]="Mgmt"
-           ["448247800550"]="Stg"
-           ["303627379544"]="Prd")
-red_bold_format="\\033[1;31m"
-reset_all_format="\\033[0m"
-error_str="\\n${red_bold_format}ERROR:${reset_all_format}"
-
 # Input validation
 if [[ $# -lt 2 ]]; then
     echo "Usage: deploy.sh <environment> <action>"
