@@ -9,6 +9,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh "chmod u+x $BUILD_HOME/build.sh"
+                sh "./build.sh"
             }
         }
         stage('Test') {
