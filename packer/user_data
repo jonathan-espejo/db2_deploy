@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo KEY_PAIR > /home/ec2-user/.ssh/authorized_keys
+service sshd start

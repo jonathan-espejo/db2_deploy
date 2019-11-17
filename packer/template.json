@@ -1,0 +1,53 @@
+{
+
+  "variables": {
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "vpc_region": "ap-southeast-2",
+    "vpc_id": "vpc-0dd4334664b29d533",
+    "source_ami": "ami-0b9954a5175d385ba",
+    "vpc_public_sg_id": "sg-02a2569a3c79c9d38",
+    "vpc_public_sn_id": "subnet-095c186e",
+    "instance_type": "t2.micro",
+    "ssh_private_key_file": null,
+    "user_data_file": null,
+    "ssh_username": "ec2-user"
+  },
+
+  "builders": [
+
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "{{user `vpc_region`}}",
+      "vpc_id": "{{user `vpc_id`}}",
+      "subnet_id": "{{user `vpc_public_sn_id`}}",
+      "associate_public_ip_address": true,
+      "security_group_id": "{{user `vpc_public_sg_id`}}",
+      "source_ami": "{{user `source_ami`}}",
+      "communicator": "ssh",
+      "instance_type": "{{user `instance_type`}}",
+      "ssh_username": "{{user `ssh_username`}}",
+      "ssh_private_key_file": "{{user `ssh_private_key_file`}}",
+      "user_data_file": "{{user `user_data_file`}}",
+      "ami_name": "base-ami-{{isotime \"2006-01-02-1504\"}}",
+      "ami_groups": "all",
+      "launch_block_device_mappings": [
+        {
+          "device_name": "/dev/sda1",
+          "volume_type": "gp2",
+          "volume_size": "30",
+          "delete_on_termination": true
+        }
+      ]
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "script/install-yum.sh"
+    }
+  ]
+}

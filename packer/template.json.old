@@ -1,0 +1,82 @@
+{
+    "variables": {
+      "ami_name": null,
+      "aws_access_key": "",
+      "aws_secret_key": "",
+      "aws_region": "ap-southeast-2",
+      "aws_vpc_id": null,
+      "aws_subnet_id": null,
+      "base_ami": null,
+      "iag_billing_code": "WRK114769",
+      "iag_application": "db2 cluster",
+      "ssh_username": "ec2-user",
+      "ssh_key_pair": "aws_ami",
+      "ssh_private_key_file": null,
+      "user_data_file": null
+    },
+    "builders": [{
+      "access_key": "{{user `aws_access_key`}}",
+      "ami_name": "{{user `ami_name`}}",
+      "instance_type": "t2.micro",
+      "region": "{{user `aws_region`}}",
+      "run_tags": {
+        "Billing Code": "{{user `iag_billing_code`}}",
+        "application": "{{user `iag_application`}}"
+      },
+      "secret_key": "{{user `aws_secret_key`}}",
+      "source_ami": "{{user `base_ami`}}",
+      "subnet_id": "{{user `aws_subnet_id`}}",
+      "communicator": "ssh",
+      "ssh_username": "{{user `ssh_username`}}",
+      "ssh_keypair_name": "{{user `ssh_key_pair`}}",
+      "ssh_private_key_file": "{{user `ssh_private_key_file`}}",
+      "tags": {
+        "Billing Code": "{{user `iag_billing_code`}}",
+        "application": "{{user `iag_application`}}",
+        "base-ami": "{{user `base_ami`}}",
+        "encrypted": "False"
+      },
+      "type": "amazon-ebs",
+      "vpc_id": "{{user `aws_vpc_id`}}",
+      "user_data_file": "{{user `user_data_file`}}",
+      "temporary_security_group_source_cidrs": ["10.0.0.0/8"],
+      "launch_block_device_mappings": [
+        {
+          "device_name": "/dev/sda1",
+          "volume_type": "gp2",
+          "volume_size": "40",
+          "delete_on_termination": true
+        },
+		    {
+          "volume_type" : "gp2",
+          "device_name" : "/dev/xvdb",
+          "delete_on_termination" : true,
+          "volume_size" : 20
+        },
+        {
+          "volume_size" : 10,
+          "delete_on_termination" : true,
+          "device_name" : "/dev/xvdc",
+          "volume_type" : "gp2"
+        },
+        {
+          "volume_size" : 10,
+          "delete_on_termination" : true,
+          "device_name" : "/dev/xvdd",
+          "volume_type" : "gp2"
+        },
+        {
+          "volume_size" : 10,
+          "delete_on_termination" : true,
+          "device_name" : "/dev/xvde",
+          "volume_type" : "gp2"
+        }
+      ]
+    }],
+    "provisioners": [
+      {
+        "type": "shell",
+        "inline": ["echo I'm ok"]
+      }
+    ]
+  }
