@@ -1,8 +1,8 @@
 {
 
   "variables": {
-    "aws_access_key": "AKIAYQ5CO7KLT44KKW6R",
-    "aws_secret_key": "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",
+    "aws_access_key": "user",
+    "aws_secret_key": "user",
     "vpc_region": "ap-southeast-2",
     "vpc_id": "vpc-0dd4334664b29d533",
     "source_ami": "ami-0b9954a5175d385ba",
