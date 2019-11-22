@@ -7,12 +7,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..packer build stage'
-                sh "chmod 777 ./shared_libs/*"
-                sh "touch file1.txt"
-                sh "ls -l"
+                sh "ssh-k"eygen -q -N '' -t rsa -C 'Packer' -f mykp"
                 sh "./build.sh"
-                sh "ls -l"
             }
         }
         stage('Test') {
