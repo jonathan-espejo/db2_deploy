@@ -40,12 +40,7 @@ generate_temp_ssh_key "${ssh_file_name}"
 echo "$?"
 template_ssh_to_user_data "${ssh_file_name}.pub" "./packer/user_data"
 echo "$?"
-# Reset the trap functions because template overrode the other one
-echo "$?"#shellche
-ck disable
-=SC2064
-echo "$?"
-
+ls -l
 trap "clean_up" EXIT
 
 echo 'Beginning bake process . . .'
