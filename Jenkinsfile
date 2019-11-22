@@ -9,6 +9,7 @@ pipeline {
             steps {
                 echo 'Building..packer build stage'
                 sh "chmod 777 ./shared_libs/*"
+                sh "sudo -i -u ec2-user touch file1.txt"
                 sh "./build.sh"
             }
         }
