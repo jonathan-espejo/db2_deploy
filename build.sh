@@ -31,14 +31,20 @@ source shared_libs/template_ssh_to_user_data.sh
 
 # CONSTANTS
 readonly NOW=$(date "+%Y%m%d%H%M%S")
-
+echo "$?"
 echo 'Generating a temporary SSH key-pair for packer . . .'
+echo "$?"
 ssh_file_name="db2-packer-${NOW}"
+echo "$?"
 generate_temp_ssh_key "${ssh_file_name}"
+echo "$?"
 template_ssh_to_user_data "${ssh_file_name}.pub" "./packer/user_data"
-
+echo "$?"
 # Reset the trap functions because template overrode the other one
-#shellcheck disable=SC2064
+echo "$?"#shellche
+ck disable
+=SC2064
+echo "$?"
 
 trap "clean_up" EXIT
 
