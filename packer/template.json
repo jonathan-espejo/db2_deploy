@@ -5,7 +5,7 @@
     "aws_secret_key": "",
     "vpc_region": "ap-southeast-2",
     "vpc_id": "vpc-0dd4334664b29d533",
-    "source_ami": "ami-0b9954a5175d385ba",
+    "source_ami": "ami-0907980b5599b095f",
     "vpc_public_sg_id": "sg-02a2569a3c79c9d38",
     "vpc_public_sn_id": "subnet-095c186e",
     "instance_type": "t2.micro",
