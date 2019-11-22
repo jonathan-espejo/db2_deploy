@@ -37,6 +37,7 @@ ssh_file_name="db2-packer-${NOW}"
 
 ssh-keygen -q -N '' -t rsa -C 'Packer' -f mykp
 
+exit 0
 generate_temp_ssh_key "${ssh_file_name}"
 template_ssh_to_user_data "${ssh_file_name}.pub" "./packer/user_data"
 trap "clean_up" EXIT
