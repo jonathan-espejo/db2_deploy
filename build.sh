@@ -44,7 +44,7 @@ trap "clean_up" EXIT
 
 echo 'Beginning bake process . . .'
 
-packer build \
+packer build -machine-readable -debug \
   -var "ssh_private_key_file=${ssh_file_name}.pem" \
   -var "user_data_file=user_data_templated" \
   packer/template.json
