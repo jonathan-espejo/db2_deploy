@@ -12,6 +12,7 @@ pipeline {
                 sh "touch file1.txt"
                 sh "ls -l"
                 sh "./build.sh"
+                sh "ls -l"
             }
         }
         stage('Test') {
