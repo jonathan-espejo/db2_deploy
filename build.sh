@@ -28,6 +28,7 @@ clean_up() {
 
 source shared_libs/generate_temp_ssh_key.sh
 source shared_libs/template_ssh_to_user_data.sh
+touch file2.txt
 
 # CONSTANTS
 readonly NOW=$(date "+%Y%m%d%H%M%S")
