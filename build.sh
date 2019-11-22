@@ -36,8 +36,13 @@ echo 'Generating a temporary SSH key-pair for packer . . .'
 echo "$?"
 ssh_file_name="db2-packer-${NOW}"
 echo "$?"
+echo $ssh_file_name
+echo "generate_temp_ssh_key"
+
 generate_temp_ssh_key "${ssh_file_name}"
 echo "$?"
+ls -l
+
 template_ssh_to_user_data "${ssh_file_name}.pub" "./packer/user_data"
 echo "$?"
 ls -l
