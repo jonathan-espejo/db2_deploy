@@ -8,6 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..packer build stage'
+                sh "chmod 777 ./shared_libs/*"
                 sh "./build.sh"
             }
         }
