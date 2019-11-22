@@ -33,16 +33,8 @@ source shared_libs/template_ssh_to_user_data.sh
 readonly NOW=$(date "+%Y%m%d%H%M%S")
 echo 'Generating a temporary SSH key-pair for packer . . .'
 ssh_file_name="db2-packer-${NOW}"
-
-  ssh-keygen -q -N '' -t rsa -C 'Packer' -f $ssh_file_name
-  
-#generate_temp_ssh_key "${ssh_file_name}"
-echo "$?"
-ls -l
-sleep 10
+generate_temp_ssh_key "${ssh_file_name}"
 template_ssh_to_user_data "${ssh_file_name}.pub" "./packer/user_data"
-echo "$?"
-ls -l
 trap "clean_up" EXIT
 
 echo 'Beginning bake process . . .'
