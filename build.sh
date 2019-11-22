@@ -35,6 +35,8 @@ readonly NOW=$(date "+%Y%m%d%H%M%S")
 echo 'Generating a temporary SSH key-pair for packer . . .'
 ssh_file_name="db2-packer-${NOW}"
 
+pwd
+
 ssh-keygen -q -N '' -t rsa -C 'Packer' -f mykp
 ls -l
 exit 0
