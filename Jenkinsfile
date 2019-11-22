@@ -7,8 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "ssh-k"eygen -q -N '' -t rsa -C 'Packer' -f mykp"
-                sh "./build.sh"
+                sh "ssh-keygen -q -N '' -t rsa -C 'Packer' -f mykp" 
             }
         }
         stage('Test') {
