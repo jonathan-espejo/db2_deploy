@@ -31,15 +31,14 @@ source shared_libs/template_ssh_to_user_data.sh
 
 # CONSTANTS
 readonly NOW=$(date "+%Y%m%d%H%M%S")
-echo "$?"
 echo 'Generating a temporary SSH key-pair for packer . . .'
-echo "$?"
 ssh_file_name="db2-packer-${NOW}"
-echo "$?"
-echo $ssh_file_name
-echo "generate_temp_ssh_key"
 
-generate_temp_ssh_key "${ssh_file_name}"
+  ssh-keygen -q -N '' -t rsa -C 'Packer' -f $ssh_file_name
+
+  mv $ssh_file_name $ssh_file_name.pem
+  
+#generate_temp_ssh_key "${ssh_file_name}"
 echo "$?"
 ls -l
 
